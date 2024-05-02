@@ -1,0 +1,17 @@
+<!-- templates/library/author_list.html -->
+
+{% extends 'library/base.html' %}
+
+{% block title %}Authors List{% endblock %}
+
+{% block content %}
+    <h1>Authors List</h1>
+    <ul>
+        {% for author in object_list %}
+            <li><a href="{% url 'author_detail' author.pk %}">{{ author.name }}</a></li>
+        {% empty %}
+            <li>No authors available.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'author_create' %}" class="btn btn-primary">Add New Author</a>
+{% endblock %}

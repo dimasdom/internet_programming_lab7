@@ -1,0 +1,25 @@
+msgid ""
+msgstr ""
+"Language: uk\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "Books List"
+msgstr "Список книг"
+
+msgid "by"
+msgstr "від"
+
+msgid "Edit"
+msgstr "Редагувати"
+
+msgid "Delete"
+msgstr "Видалити"
+
+msgid "No books available."
+msgstr "Книг немає."
+
+msgid "Add New Book"
+msgstr "Додати нову книгу"
+
+msgid "Back to Authors List"
+msgstr "Повернутися до списку авторів"

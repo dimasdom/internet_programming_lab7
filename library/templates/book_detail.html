@@ -1,0 +1,16 @@
+<!-- templates/library/book_detail.html -->
+
+{% extends 'library/base.html' %}
+
+{% block title %}Book Detail: {{ object.title }}{% endblock %}
+
+{% block content %}
+    <h1>{{ object.title }}</h1>
+    <p>Author: {{ object.author }}</p>
+    <p>Published Date: {{ object.published_date }}</p>
+    <p>ISBN: {{ object.isbn }}</p>
+    <p>Summary: {{ object.summary }}</p>
+    <a href="{% url 'book_update' object.pk %}" class="btn btn-primary">Edit</a>
+    <a href="{% url 'book_delete' object.pk %}" class="btn btn-danger">Delete</a>
+    <a href="{% url 'book_list' %}" class="btn btn-secondary">Back to Books List</a>
+{% endblock %}

@@ -1,0 +1,22 @@
+<!-- templates/library/book_list.html -->
+
+{% extends 'library/base.html' %}
+
+{% block title %}{% trans "Books List" %}{% endblock %}
+
+{% block content %}
+    <h1>{% trans "Books List" %}</h1>
+    <ul>
+        {% for book in object_list %}
+            <li>
+                <a href="{% url 'book_detail' book.pk %}">{{ book.title }}</a> {% trans "by" %} {{ book.author }}
+                <a href="{% url 'book_update' book.pk %}" class="btn btn-sm btn-primary">{% trans "Edit" %}</a>
+                <a href="{% url 'book_delete' book.pk %}" class="btn btn-sm btn-danger">{% trans "Delete" %}</a>
+            </li>
+        {% empty %}
+            <li>{% trans "No books available." %}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'book_create' %}" class="btn btn-primary">{% trans "Add New Book" %}</a>
+    <a href="{% url 'author_list' %}" class="btn btn-secondary">{% trans "Back to Authors List" %}</a>
+{% endblock %}

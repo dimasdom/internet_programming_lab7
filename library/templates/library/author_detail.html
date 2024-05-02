@@ -1,0 +1,13 @@
+<!-- templates/library/author_detail.html -->
+
+{% extends 'library/base.html' %}
+
+{% block title %}Author Detail: {{ object.name }}{% endblock %}
+
+{% block content %}
+    <h1>{{ object.name }}</h1>
+    <p>Biography: {{ object.biography }}</p>
+    <a href="{% url 'author_update' object.pk %}" class="btn btn-primary">Edit</a>
+    <a href="{% url 'author_delete' object.pk %}" class="btn btn-danger">Delete</a>
+    <a href="{% url 'author_list' %}" class="btn btn-secondary">Back to Authors List</a>
+{% endblock %}

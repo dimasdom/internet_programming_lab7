@@ -1,0 +1,16 @@
+<!-- library/templates/library/book_confirm_delete.html -->
+
+{% extends 'library/base.html' %}
+
+{% load i18n %}  <!-- Load internationalization tags -->
+
+{% block content %}
+    <h1>{% trans "Confirm Book Deletion" %}</h1>
+    <p>{% trans "Are you sure you want to delete the book?" %}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">{% trans "Confirm Delete" %}</button>
+        <a href="{% url 'book_detail' book.pk %}" class="btn btn-secondary">{% trans "Cancel" %}</a>
+    </form>
+{% endblock %}
