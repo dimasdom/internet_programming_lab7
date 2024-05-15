@@ -8,9 +8,29 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container mt-4">
+    <header>
+        <!-- Header content goes here -->
+        <h1>My Website</h1>
+        <nav>
+            <ul style="
+            display: flex;
+            justify-content: space-around;
+        ">
+                <li><a href="/accounts/profile">Profile</a></li>
+                <li><a href="/books">Books</a></li>
+        <li><a href="/">Authors</a></li>
+        <li><a href="/users">Users</a></li>
+        <li><a href="/accounts/logout">Logout</a></li>
+                <!-- Add other navigation links as needed -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
         {% block content %}
         {% endblock %}
-    </div>
+    </main>
+
+    <!-- Include JavaScript files and other scripts -->
 </body>
 </html>

@@ -23,7 +23,7 @@ class AuthorDetailView(DetailView):
     model = Author
     template_name = 'author_detail.html'
 
-class AuthorCreateView(CreateView):
+class AuthorCreateView(LoginRequiredMixin, CreateView):
     @method_decorator(manager_required)
     def dispatch(self, *args, **kwargs):
         return super(AuthorCreateView, self).dispatch(*args, **kwargs)
@@ -33,7 +33,7 @@ class AuthorCreateView(CreateView):
     success_url = reverse_lazy('author_list')
 
 
-class AuthorUpdateView(UpdateView):
+class AuthorUpdateView(LoginRequiredMixin, UpdateView):
     @method_decorator(manager_required)
     def dispatch(self, *args, **kwargs):
         return super(AuthorUpdateView, self).dispatch(*args, **kwargs)
@@ -43,7 +43,7 @@ class AuthorUpdateView(UpdateView):
     success_url = reverse_lazy('author_list')
 
 
-class AuthorDeleteView(DeleteView):
+class AuthorDeleteView(LoginRequiredMixin, DeleteView):
     @method_decorator(manager_required)
     def dispatch(self, *args, **kwargs):
         return super(AuthorDeleteView, self).dispatch(*args, **kwargs)
@@ -59,7 +59,7 @@ class BookDetailView(DetailView):
     model = Book
     template_name = 'book_detail.html'
 
-class BookCreateView(CreateView):
+class BookCreateView(LoginRequiredMixin, CreateView):
     @method_decorator(manager_required)
     def dispatch(self, *args, **kwargs):
         return super(BookCreateView, self).dispatch(*args, **kwargs)
@@ -68,7 +68,7 @@ class BookCreateView(CreateView):
     template_name = 'book_form.html'
     success_url = reverse_lazy('book_list')
 
-class BookUpdateView(UpdateView):
+class BookUpdateView(LoginRequiredMixin, UpdateView):
     @method_decorator(manager_required)
     def dispatch(self, *args, **kwargs):
         return super(BookUpdateView, self).dispatch(*args, **kwargs)
@@ -77,7 +77,7 @@ class BookUpdateView(UpdateView):
     template_name = 'book_form.html'
     success_url = reverse_lazy('book_list')
 
-class BookDeleteView(DeleteView):
+class BookDeleteView(LoginRequiredMixin,DeleteView):
     @method_decorator(manager_required)
     def dispatch(self, *args, **kwargs):
         return super(BookDeleteView, self).dispatch(*args, **kwargs)
@@ -112,18 +112,18 @@ class UserListView(LoginRequiredMixin, ListView):
     template_name = 'user_list.html'
     context_object_name = 'users'
 
-    #@method_decorator(admin_required)
-    #def dispatch(self, *args, **kwargs):
-    #    return super(UserListView, self).dispatch(*args, **kwargs)
+    @method_decorator(admin_required)
+    def dispatch(self, *args, **kwargs):
+        return super(UserListView, self).dispatch(*args, **kwargs)
 
 class UserDeleteView(LoginRequiredMixin, DeleteView):
     model = CustomUser
     template_name = 'user_delete.html'
     success_url = reverse_lazy('user_list')
 
-    #@method_decorator(admin_required)
-    #def dispatch(self, *args, **kwargs):
-    #    return super(UserDeleteView, self).dispatch(*args, **kwargs)
+    @method_decorator(admin_required)
+    def dispatch(self, *args, **kwargs):
+        return super(UserDeleteView, self).dispatch(*args, **kwargs)
 
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
