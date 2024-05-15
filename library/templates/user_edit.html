@@ -1,0 +1,27 @@
+<!-- templates/user_edit.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit User</title>
+</head>
+<body>
+    <h1>Edit User "{{ user.username }}"</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" value="{{ user.username }}"><br>
+        
+        <label for="role">Role:</label>
+        <select id="role" name="role">
+            <option value="admin" {% if user.role == 'admin' %}selected{% endif %}>Admin</option>
+            <option value="manager" {% if user.role == 'manager' %}selected{% endif %}>Manager</option>
+            <option value="ordinary" {% if user.role == 'ordinary' %}selected{% endif %}>Ordinary User</option>
+        </select><br>
+        
+        <button type="submit">Save Changes</button>
+        <a href="{% url 'user_list' %}">Cancel</a>
+    </form>
+</body>
+</html>
